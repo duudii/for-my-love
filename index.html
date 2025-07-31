@@ -158,6 +158,10 @@
 
   <div class="prompt" id="prompt">
     <p>Would you like to open the letter?</p>
+
+    <!-- Optional envelope animation -->
+    <!-- <img src="envelope.gif" alt="Envelope animation" style="width:100%; max-width:300px; border-radius: 12px; margin: 1rem auto;" /> -->
+
     <div class="btns" id="buttons">
       <button onclick="openLetter()">Yes 💌</button>
       <button id="noBtn" onclick="showTryAgain()">No 🙈</button>
@@ -166,8 +170,6 @@
   </div>
 
   <div class="letter" id="letter"></div>
-
-  <iframe width="0" height="0" id="musicPlayer" src="" frameborder="0" allow="autoplay" allowfullscreen></iframe>
 
   <script>
     function showTryAgain() {
@@ -190,7 +192,15 @@
 
     function openLetter() {
       document.getElementById('prompt').style.display = 'none';
-      document.getElementById('musicPlayer').src = "https://www.youtube.com/embed/i_rw1C9eG_Q?autoplay=1&loop=1&playlist=i_rw1C9eG_Q";
+
+      // Create invisible YouTube iframe on click (mobile autoplay)
+      const player = document.createElement("iframe");
+      player.width = "0";
+      player.height = "0";
+      player.allow = "autoplay";
+      player.src = "https://www.youtube.com/embed/i_rw1C9eG_Q?autoplay=1&loop=1&playlist=i_rw1C9eG_Q";
+      player.style.display = "none";
+      document.body.appendChild(player);
 
       const letter = document.getElementById('letter');
       letter.style.display = 'block';
