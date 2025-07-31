@@ -167,7 +167,7 @@
 
   <div class="letter" id="letter"></div>
 
-  <audio id="bgMusic" loop preload="auto">
+  <audio id="bgMusic" preload="auto" loop>
     <source src="music.mp3" type="audio/mp3" />
     Your browser does not support the audio tag.
   </audio>
@@ -192,30 +192,21 @@
       document.getElementById('prompt').style.display = 'none';
 
       const music = document.getElementById('bgMusic');
-      if (music) {
-        music.play().catch(e => console.log("Autoplay blocked:", e));
+      if (music && typeof music.play === 'function') {
+        music.play().catch(err => console.log('Autoplay failed:', err));
       }
 
       const letter = document.getElementById('letter');
       letter.style.display = 'block';
       letter.innerHTML = `
         <p>My Dearest Maralgua,</p>
-
-<p>From the moment I saw you, something in my world changed. It was as if my heart recognized yours, as if the universe whispered, "There she is." Your presence lit up a place inside me I didn’t know existed—one that longed for love, for connection, for you.</p>
-
-<p>You are the softness in my mornings and the peace in my nights. You make the ordinary feel magical, and the difficult feel easier just by being there. The way you smile, the way you care about the smallest things—it all pulls me in deeper every single day. I find myself constantly in awe of your beauty, not just outside, but the incredible soul you carry within.</p>
-
-<p>I remember the first time I saw you on TikTok. I paused, mesmerized. I thought to myself, “How can someone be this beautiful and real?” Then we talked. And with every word, I realized you weren’t just beautiful—you were rare, radiant, and everything I never knew I needed. Since that day, every moment has felt like a blessing. One month and eighteen days later, I’m still falling for you—harder than I ever thought possible.</p>
-
-<p>I don’t know what the future holds, but I do know this: I want to write our story together. I want to be the reason you smile when you wake up, the hand you hold when life gets tough, the one who believes in you when you forget to believe in yourself.</p>
-
-<p>In your eyes, I see my forever. In your heart, I find my home.</p>
-
-<p>I love you, endlessly and truly.</p>
-
-<p>Forever yours,  
-<br>— Your hopeless romantic</p>
-
+        <p>From the moment I saw you, something in my world changed. It was as if my heart recognized yours, as if the universe whispered, "There she is." Your presence lit up a place inside me I didn’t know existed—one that longed for love, for connection, for you.</p>
+        <p>You are the softness in my mornings and the peace in my nights. You make the ordinary feel magical, and the difficult feel easier just by being there. The way you smile, the way you care about the smallest things—it all pulls me in deeper every single day. I find myself constantly in awe of your beauty, not just outside, but the incredible soul you carry within.</p>
+        <p>I remember the first time I saw you on TikTok. I paused, mesmerized. I thought to myself, “How can someone be this beautiful and real?” Then we talked. And with every word, I realized you weren’t just beautiful—you were rare, radiant, and everything I never knew I needed. Since that day, every moment has felt like a blessing. One month and eighteen days later, I’m still falling for you—harder than I ever thought possible.</p>
+        <p>I don’t know what the future holds, but I do know this: I want to write our story together. I want to be the reason you smile when you wake up, the hand you hold when life gets tough, the one who believes in you when you forget to believe in yourself.</p>
+        <p>In your eyes, I see my forever. In your heart, I find my home.</p>
+        <p>I love you, endlessly and truly.</p>
+        <p>Forever yours,<br>— Your hopeless romantic</p>
       `;
     }
 
