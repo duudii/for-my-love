@@ -167,10 +167,10 @@
 
   <div class="letter" id="letter"></div>
 
-  <audio id="bgMusic" preload="auto" loop>
-    <source src="music.mp3" type="audio/mp3" />
-    Your browser does not support the audio tag.
-  </audio>
+ <audio id="bgMusic" preload="auto" loop>
+  <source src="music.mp3" type="audio/mp3" />
+  Your browser does not support the audio tag.
+</audio>
 
   <script>
     function showTryAgain() {
@@ -189,16 +189,21 @@
     }
 
     function openLetter() {
-      document.getElementById('prompt').style.display = 'none';
+  document.getElementById('prompt').style.display = 'none';
 
-      const music = document.getElementById('bgMusic');
-      if (music && typeof music.play === 'function') {
-        music.play().catch(err => console.log('Autoplay failed:', err));
-      }
+  const music = document.getElementById('bgMusic');
+  if (music && typeof music.play === 'function') {
+    music.play().then(() => {
+      console.log('Audio started!');
+    }).catch(err => {
+      alert("Please tap to enable audio ❤️");
+      console.log('Audio failed:', err);
+    });
+  }
 
-      const letter = document.getElementById('letter');
-      letter.style.display = 'block';
-      letter.innerHTML = `
+  const letter = document.getElementById('letter');
+  letter.style.display = 'block';
+  letter.innerHTML = `
         <p>My Dearest Maralgua,</p>
         <p>From the moment I saw you, something in my world changed. It was as if my heart recognized yours, as if the universe whispered, "There she is." Your presence lit up a place inside me I didn’t know existed—one that longed for love, for connection, for you.</p>
         <p>You are the softness in my mornings and the peace in my nights. You make the ordinary feel magical, and the difficult feel easier just by being there. The way you smile, the way you care about the smallest things—it all pulls me in deeper every single day. I find myself constantly in awe of your beauty, not just outside, but the incredible soul you carry within.</p>
