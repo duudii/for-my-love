@@ -158,10 +158,6 @@
 
   <div class="prompt" id="prompt">
     <p>Would you like to open the letter?</p>
-
-    <!-- Optional envelope animation -->
-    <!-- <img src="envelope.gif" alt="Envelope animation" style="width:100%; max-width:300px; border-radius: 12px; margin: 1rem auto;" /> -->
-
     <div class="btns" id="buttons">
       <button onclick="openLetter()">Yes 💌</button>
       <button id="noBtn" onclick="showTryAgain()">No 🙈</button>
@@ -171,17 +167,20 @@
 
   <div class="letter" id="letter"></div>
 
+  <!-- Background music -->
+  <audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mp3" />
+    Your browser does not support the audio tag.
+  </audio>
+
   <script>
     function showTryAgain() {
       const msg = document.getElementById('message');
       msg.style.display = 'block';
-
       const noBtn = document.getElementById('noBtn');
       noBtn.style.display = 'none';
-
       setTimeout(() => {
         msg.style.display = 'none';
-
         const buttons = document.getElementById('buttons');
         buttons.innerHTML = `
           <button onclick="openLetter()">Yes 💌</button>
@@ -193,14 +192,12 @@
     function openLetter() {
       document.getElementById('prompt').style.display = 'none';
 
-      // Create invisible YouTube iframe on click (mobile autoplay)
-      const player = document.createElement("iframe");
-      player.width = "0";
-      player.height = "0";
-      player.allow = "autoplay";
-      player.src = "https://www.youtube.com/embed/i_rw1C9eG_Q?autoplay=1&loop=1&playlist=i_rw1C9eG_Q";
-      player.style.display = "none";
-      document.body.appendChild(player);
+      const music = document.getElementById('bgMusic');
+      if (music) {
+        music.play().catch(e => {
+          console.log("Autoplay failed:", e);
+        });
+      }
 
       const letter = document.getElementById('letter');
       letter.style.display = 'block';
