@@ -157,23 +157,14 @@
   <h1>Happy National Girlfriend's Day, Maralgua 💖</h1>
 
   <div class="prompt" id="prompt">
-  <p>Would you like to open the letter?</p>
-
-  <!-- Canva embed animation -->
-  <div style="margin: 1rem 0;">
-    <img src="envelope.gif" alt="Envelope animation" style="width:100%; border-radius:12px; margin-bottom: 1rem;" /> 
-            width="100%" height="250" 
-            style="border-radius:12px; border:none;" 
-            allowfullscreen loading="lazy">
-    </iframe>
+    <p>Would you like to open the letter?</p>
+    <div class="btns" id="buttons">
+      <button onclick="openLetter()">Yes 💌</button>
+      <button id="noBtn" onclick="showTryAgain()">No 🙈</button>
+    </div>
+    <div class="message" id="message">Aww, Please try again baby 💔</div>
   </div>
 
-  <div class="btns" id="buttons">
-    <button onclick="openLetter()">Yes 💌</button>
-    <button id="noBtn" onclick="showTryAgain()">No 🙈</button>
-  </div>
-  <div class="message" id="message">Aww, Please try again baby 💔</div>
-</div>
   <div class="letter" id="letter"></div>
 
   <iframe width="0" height="0" id="musicPlayer" src="" frameborder="0" allow="autoplay" allowfullscreen></iframe>
